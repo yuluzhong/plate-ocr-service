@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+*.log
+ocr_environment_record/
+export_ocr_requirements.py
+outputs/
+runs/
+.DS_Store
+Thumbs.db
