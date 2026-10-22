@@ -78,3 +78,22 @@ CUDA_VISIBLE_DEVICES=0 PADDLE_DEVICE=gpu:0 python paddle_ocr_service.py --host 0
 - `POST /cci_ai/service/v1/plate_number_batch`：以 multipart/form-data 上传多个文件，字段名为 `files`。
 
 识别结果位于 `result.item_list`，包含 `number`、`type`、`score`。当前代码中的 `type` 为空字符串。每张图片最多返回一个优先车牌结果。
+## 识别示例
+
+### 输入图片
+
+![车辆图片](example.jpg)
+
+### 调用接口
+
+```bash
+curl -X POST "http://127.0.0.1:9080/cci_ai/service/v1/plate_number" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary "@example.jpg"
+```
+
+### 返回结果
+
+```json
+{"code":200,"message":"success","result":{"item_list":[{"number":"晋BGV533","type":"","score":0.9999576210975647}]}}
+```
